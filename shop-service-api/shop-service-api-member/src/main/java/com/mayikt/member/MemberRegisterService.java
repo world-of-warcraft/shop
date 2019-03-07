@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSONObject;
-import com.itmayi.member.entity.UserEntity;
 import com.mayikt.base.BaseResponse;
+import com.member.input.dto.UserInpDTO;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -20,7 +21,7 @@ public interface MemberRegisterService {
 	 */
 	@PostMapping("/register")
 	@ApiOperation(value = "会员用户注册信息接口")
-	BaseResponse<JSONObject> register(@RequestBody UserEntity userEntity,
+	BaseResponse<JSONObject> register(@RequestBody UserInpDTO userEntity,
 			@RequestParam("registCode") String registCode);
 
 }
