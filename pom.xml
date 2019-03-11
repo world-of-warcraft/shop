@@ -10,7 +10,6 @@
   	<module>shop-service-impl</module>
   	<module>shop-portal</module>
   	<module>shop-common</module>
-  	<module>shop-api-entitys</module>
   </modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -61,6 +60,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>com.codingapi.txlcn</groupId>
+    		<artifactId>txlcn-tm</artifactId>
+       		<version>5.0.2.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<!-- 管理依赖 -->
