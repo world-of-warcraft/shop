@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mayikt.base.BaseResponse;
 import com.mayikt.member.feign.MemberServiceFeign;
+import com.mayikt.shop.web.base.BaseWebController;
+import com.mayikt.shop.web.utils.CookieUtils;
 import com.mayikt.web.constants.WebConstants;
 import com.member.output.dto.UserOutDTO;
-import com.shop.web.base.BaseWebController;
-import com.shop.web.utils.CookieUtils;
 
 @Controller
 public class IndexController extends BaseWebController {

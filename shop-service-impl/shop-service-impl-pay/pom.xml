@@ -12,5 +12,16 @@
   		<artifactId>shop-service-api-pay</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.springCloud</groupId>
+  		<artifactId>shop-unionpay-plugin</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
+	<dependency>
+	    <groupId>com.alipay.sdk</groupId>
+	    <artifactId>alipay-sdk-java</artifactId>
+	    <version>3.4.27.ALL</version>
+	</dependency>
   </dependencies>
 </project>

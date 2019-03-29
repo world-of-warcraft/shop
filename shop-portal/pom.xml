@@ -9,15 +9,23 @@
   <packaging>pom</packaging>
   <modules>
   	<module>shop-portal-web</module>
+  	<module>shop-portal-pay-web</module>
   </modules>
   	<dependencies>
-
 		<!-- springcloud feign组件 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.springCloud</groupId>
+			<artifactId>shop-common-web-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
   
 </project>

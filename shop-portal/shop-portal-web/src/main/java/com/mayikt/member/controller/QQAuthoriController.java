@@ -17,6 +17,9 @@ import com.mayikt.constants.Constants;
 import com.mayikt.member.controller.req.vo.LoginVo;
 import com.mayikt.member.feign.MemberLoginServiceFeign;
 import com.mayikt.member.feign.QQAuthoriFeign;
+import com.mayikt.shop.web.base.BaseWebController;
+import com.mayikt.shop.web.bean.MeiteBeanUtils;
+import com.mayikt.shop.web.utils.CookieUtils;
 import com.mayikt.web.constants.WebConstants;
 import com.member.input.dto.UserLoginInpDTO;
 import com.qq.connect.api.OpenID;
@@ -24,9 +27,6 @@ import com.qq.connect.api.qzone.UserInfo;
 import com.qq.connect.javabeans.AccessToken;
 import com.qq.connect.javabeans.qzone.UserInfoBean;
 import com.qq.connect.oauth.Oauth;
-import com.shop.web.base.BaseWebController;
-import com.shop.web.bean.MeiteBeanUtils;
-import com.shop.web.utils.CookieUtils;
 
 /**
  * 

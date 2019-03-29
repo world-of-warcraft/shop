@@ -10,6 +10,7 @@
   	<module>shop-service-impl</module>
   	<module>shop-portal</module>
   	<module>shop-common</module>
+  	<module>shop-pay-plugin</module>
   </modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>

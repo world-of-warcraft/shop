@@ -15,10 +15,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.mayikt.base.BaseResponse;
 import com.mayikt.member.controller.req.vo.RegisterVo;
 import com.mayikt.member.feign.MemberRegisterServiceFeign;
+import com.mayikt.shop.web.base.BaseWebController;
+import com.mayikt.shop.web.bean.MeiteBeanUtils;
+import com.mayikt.shop.web.utils.RandomValidateCodeUtil;
 import com.member.input.dto.UserInpDTO;
-import com.shop.web.base.BaseWebController;
-import com.shop.web.bean.MeiteBeanUtils;
-import com.shop.web.utils.RandomValidateCodeUtil;
 
 /**
  * 
