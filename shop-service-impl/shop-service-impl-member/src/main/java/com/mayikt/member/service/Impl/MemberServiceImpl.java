@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mayikt.base.BaseApiService;
 import com.mayikt.base.BaseResponse;
 import com.mayikt.constants.Constants;
-import com.mayikt.core.bean.BeanUtil;
+import com.mayikt.core.bean.ShopBeanUtil;
 import com.mayikt.core.token.GenerateToken;
 import com.mayikt.core.type.TypeCastHelper;
-import com.mayikt.member.MemberService;
 import com.mayikt.member.feign.OrderServiceAppFeign;
 import com.mayikt.member.mapper.UserMapper;
 import com.mayikt.member.mapper.entity.UserDo;
+import com.mayikt.member.service.MemberService;
 import com.member.output.dto.UserOutDTO;
 
 @RestController
@@ -39,7 +39,7 @@ public class MemberServiceImpl extends BaseApiService<UserOutDTO> implements Mem
 		if(userDo==null) {
 			return setResultError(Constants.HTTP_RES_CODE_NOTUSER_203, "该用户不存在");
 		}
-		return setResultSuccess(BeanUtil.doToDto(userDo, UserOutDTO.class));
+		return setResultSuccess(ShopBeanUtil.doToDto(userDo, UserOutDTO.class));
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class MemberServiceImpl extends BaseApiService<UserOutDTO> implements Mem
 			return setResultError("用户不存在!");
 		}
 		// 下节课将 转换代码放入在BaseApiService
-		return setResultSuccess(BeanUtil.doToDto(userDo, UserOutDTO.class));
+		return setResultSuccess(ShopBeanUtil.doToDto(userDo, UserOutDTO.class));
 	}
 	// token存放在PC端 cookie token 存放在安卓 或者IOS端 存放在本地文件中
 	// 当前存在那些问题？ 用户如果退出或者修改密码、忘记密码的情况 对token状态进行标识

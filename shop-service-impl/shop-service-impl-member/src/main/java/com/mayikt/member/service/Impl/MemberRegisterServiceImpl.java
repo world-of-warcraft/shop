@@ -10,12 +10,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.mayikt.base.BaseApiService;
 import com.mayikt.base.BaseResponse;
 import com.mayikt.constants.Constants;
-import com.mayikt.core.bean.BeanUtil;
+import com.mayikt.core.bean.ShopBeanUtil;
 import com.mayikt.core.utils.MD5Util;
-import com.mayikt.member.MemberRegisterService;
 import com.mayikt.member.feign.VerificaCodeServiceFeign;
 import com.mayikt.member.mapper.UserMapper;
 import com.mayikt.member.mapper.entity.UserDo;
+import com.mayikt.member.service.MemberRegisterService;
 import com.member.input.dto.UserInpDTO;
 
 @RestController
@@ -45,7 +45,7 @@ public class MemberRegisterServiceImpl extends BaseApiService<JSONObject> implem
 		String newPassword = MD5Util.MD5(password);
 		userInpDTO.setPassword(newPassword);
 		// 4.调用数据库插入数据 将请求的dto参数转换DO		
-		UserDo userDo = BeanUtil.dtoToDo(userInpDTO, UserDo.class);
+		UserDo userDo = ShopBeanUtil.dtoToDo(userInpDTO, UserDo.class);
 		return userMapper.register(userDo) > 0 ? setResultSuccess("注册成功") : setResultError("注册失败!");
 	}
 	// dto 和do 可能 实体类不同，但是部分参数可能相同

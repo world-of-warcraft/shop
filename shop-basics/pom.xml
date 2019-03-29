@@ -10,5 +10,8 @@
   <modules>
   	<module>basics-springcloud-eureka</module>
   	<module>basics-springcloud-zuul</module>
+  	<module>basics-springcloud-lcn</module>
+  	<module>basics-springcloud-cat</module>
+  	<module>basic-springcloud-zipkinServer</module>
   </modules>
 </project>

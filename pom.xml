@@ -61,11 +61,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-		<dependency>
-    		<groupId>com.codingapi.txlcn</groupId>
-    		<artifactId>txlcn-tm</artifactId>
-       		<version>5.0.2.RELEASE</version>
-		</dependency>
 	</dependencies>
 	<!-- 管理依赖 -->
 	<dependencyManagement>

@@ -3,7 +3,6 @@ package com.mayikt.member.service.Impl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +13,11 @@ import com.mayikt.constants.Constants;
 import com.mayikt.core.token.GenerateToken;
 import com.mayikt.core.transaction.RedisDataSoureceTransaction;
 import com.mayikt.core.utils.MD5Util;
-import com.mayikt.member.MemberLoginService;
 import com.mayikt.member.mapper.UserMapper;
 import com.mayikt.member.mapper.UserTokenMapper;
 import com.mayikt.member.mapper.entity.UserDo;
 import com.mayikt.member.mapper.entity.UserTokenDo;
+import com.mayikt.member.service.MemberLoginService;
 import com.member.input.dto.UserLoginInpDTO;
 
 @RestController

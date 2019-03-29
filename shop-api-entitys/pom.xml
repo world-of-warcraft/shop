@@ -11,6 +11,8 @@
   	<module>shop-api-member-entity</module>
   	<module>shop-api-wachat-entity</module>
   	<module>shop-api-order-entity</module>
+  	<module>shop-api-pay-dto</module>
+  	<module>shop-api-goods-dto</module>
   </modules>
   <dependencies>
   <!-- swagger-spring-boot -->

@@ -10,9 +10,9 @@ import com.mayikt.base.BaseApiService;
 import com.mayikt.base.BaseResponse;
 import com.mayikt.constants.Constants;
 import com.mayikt.core.token.GenerateToken;
-import com.mayikt.member.QQAuthoriService;
 import com.mayikt.member.mapper.UserMapper;
 import com.mayikt.member.mapper.entity.UserDo;
+import com.mayikt.member.service.QQAuthoriService;
 
 @RestController
 public class QQAuthoriServiceImpl extends BaseApiService<JSONObject> implements QQAuthoriService {

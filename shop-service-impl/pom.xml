@@ -11,8 +11,15 @@
   	<module>shop-service-member</module>
   	<module>shop-service-order</module>
   	<module>shop-service-impl-wechat</module>
+  	<module>shop-service-impl-pay</module>
+  	<module>shop-service-impl-goods</module>
   </modules>
    <dependencies>
+	   <dependency>
+	  		<groupId>com.springCloud</groupId>
+	    	<artifactId>shop-common-core</artifactId>
+	    	<version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
 		<!-- springcloud feign组件 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

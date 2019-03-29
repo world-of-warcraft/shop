@@ -11,6 +11,8 @@
   	<module>shop-service-api-order</module>
   	<module>shop-service-api-member</module>
   	<module>shop-service-api-wechat</module>
+  	<module>shop-service-api-pay</module>
+  	<module>shop-service-api-goods</module>
   </modules>
   <dependencies>
   <!-- swagger-spring-boot -->
