@@ -1,6 +1,9 @@
 package com.mayikt.pay.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mayikt.base.BaseResponse;
-import com.mayikt.pay.feigin.PayMentTransacInfoFeign;
-import com.mayikt.pay.feigin.PaymentChannelFeign;
+import com.mayikt.pay.feign.PayContextFeign;
+import com.mayikt.pay.feign.PayMentTransacInfoFeign;
+import com.mayikt.pay.feign.PaymentChannelFeign;
 import com.mayikt.shop.web.base.BaseWebController;
 import com.pay.output.dto.PayMentTransacDTO;
 import com.pay.output.dto.PaymentChannelDTO;
@@ -33,6 +38,8 @@ public class PayController extends BaseWebController {
 	private PayMentTransacInfoFeign payMentTransacInfoFeign;
 	@Autowired
 	private PaymentChannelFeign paymentChannelFeign;
+	@Autowired
+	private PayContextFeign payContextFeign;
 
 	@RequestMapping("/pay")
 	public String pay(String payToken, Model model) {
@@ -50,6 +57,7 @@ public class PayController extends BaseWebController {
 		// 3.查询支付信息
 		PayMentTransacDTO data = tokenByPayMentTransac.getData();
 		model.addAttribute("data", data);
+		model.addAttribute("payToken", payToken);
 		// 4.查询渠道信息
 		List<PaymentChannelDTO> paymentChanneList = paymentChannelFeign.selectAll();
 		model.addAttribute("paymentChanneList", paymentChanneList);
@@ -57,8 +65,13 @@ public class PayController extends BaseWebController {
 	}
 	
 	@RequestMapping("/channel")
-	public String channel(String channelId) {
+	public void channel(String channelId,String payToken,HttpServletResponse resp) throws IOException {
+		resp.setContentType("text/html; charset=UTF-8");
+		BaseResponse<JSONObject> html=payContextFeign.toPayHtml(channelId, payToken);
+		if(isSuccess(html)) {
+			JSONObject json=html.getData();
+			resp.getWriter().write(json.getString("payhtml"));
+		}
 		
-		return "";
 	}
 }

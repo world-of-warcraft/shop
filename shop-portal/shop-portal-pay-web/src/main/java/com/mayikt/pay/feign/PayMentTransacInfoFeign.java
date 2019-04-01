@@ -1,4 +1,4 @@
-package com.mayikt.pay.feigin;
+package com.mayikt.pay.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 

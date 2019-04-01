@@ -1,5 +1,7 @@
 package com.mayikt.pay.api.strategy.Impl;
 
+import java.math.BigDecimal;
+
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
@@ -24,19 +26,43 @@ public class AliPayStrategy implements PayStrategy{
 		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();//创建API对应的request
 		 alipayRequest.setReturnUrl("http://domain.com/CallBack/return_url.jsp");
 		 alipayRequest.setNotifyUrl("http://domain.com/CallBack/notify_url.jsp");//在公共参数中设置回跳和通知地址
-		 JSONObject json=new JSONObject();
-		 json.put("out_trade_no", payMentTransacDTO.getPaymentId());
-		 json.put("product_code", "FAST_INSTANT_TRADE_PAY");
-		 json.put("total_amount", "");
-		 json.put("subject", payMentTransacDTO.getPayAmount()/100);
-		 alipayRequest.setBizContent(json.toJSONString());//填充业务参数
-		    String form="";
+		// 商户订单号，商户网站订单系统中唯一订单号，必填
+			String outTradeNo = payMentTransacDTO.getPaymentId();
+			// 付款金额，必填
+			String totalAmount = changeF2Y(payMentTransacDTO.getPayAmount() + "");
+			// 订单名称，必填
+			String subject = "每特教育微服务电商项目";
+			// 商品描述，可空
+			String body = "每特教育微服务电商项目";
+
+			alipayRequest.setBizContent("{\"out_trade_no\":\"" + outTradeNo + "\"," + "\"total_amount\":\"" + totalAmount
+					+ "\"," + "\"subject\":\"" + subject + "\"," + "\"body\":\"" + body + "\","
+					+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 		    try {
-		        form = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单
+		    	 String  form = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单
+		    	 return form;
 		    } catch (AlipayApiException e) {
 		        e.printStackTrace();
+		        return null;
 		    }
-		return form;
+		
+	}
+	
+	/** 金额为分的格式 */
+	public static final String CURRENCY_FEN_REGEX = "\\-?[0-9]+";
+
+	/**
+	 * 将分为单位的转换为元 （除100）
+	 * 
+	 * @param amount
+	 * @return
+	 * @throws Exception
+	 */
+	public static String changeF2Y(String amount) {
+		if (!amount.matches(CURRENCY_FEN_REGEX)) {
+			return null;
+		}
+		return BigDecimal.valueOf(Long.valueOf(amount)).divide(new BigDecimal(100)).toString();
 	}
 
 }
